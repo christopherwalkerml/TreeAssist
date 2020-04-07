@@ -71,10 +71,6 @@ Tools:
   Tree Destruction Require Tools: true
   Tools List:
   - DIAMOND_AXE
-  - WOODEN_AXE
-  - GOLDEN_AXE
-  - IRON_AXE
-  - STONE_AXE
   Drop Chance:
     DIAMOND_AXE: 100
     WOODEN_AXE: 100

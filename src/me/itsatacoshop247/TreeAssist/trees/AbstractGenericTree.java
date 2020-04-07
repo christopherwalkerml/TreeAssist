@@ -162,6 +162,13 @@ public abstract class AbstractGenericTree {
     abstract protected List<Block> calculate(final Block bottom, final Block top);
 
     public static AbstractGenericTree calculate(BlockBreakEvent event) {
+        Player player = event.getPlayer();
+        ItemStack item = player.getItemInHand();
+        if (item.getItemMeta() == null || !item.getItemMeta().hasDisplayName() || !item.getItemMeta().getDisplayName().contains("Emerald Double Axe")) {
+            if (item.getItemMeta().isUnbreakable()) {
+                return new InvalidTree();
+            }
+        }
 
         debug.i("calculating " + event.getBlock().getLocation().toString());
 
@@ -196,8 +203,6 @@ public abstract class AbstractGenericTree {
 
         }
 
-        Player player = event.getPlayer();
-
         if (!resultTree.hasPerms(player)) {
             debug.i("No permission!");
             if (plugin.getConfig().getBoolean("Sapling Replant.Enforce")) {
@@ -219,7 +224,6 @@ public abstract class AbstractGenericTree {
 
         if (!"".equals(lore)) {
             debug.i("Lore needed!");
-            ItemStack item = player.getItemInHand();
             if (item == null || !item.hasItemMeta() || !item.getItemMeta().hasLore() || !item.getItemMeta().getLore().contains(lore)) {
                 debug.i("Lore not found: " + lore);
 

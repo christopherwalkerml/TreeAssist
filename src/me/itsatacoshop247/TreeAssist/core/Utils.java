@@ -3,6 +3,7 @@ package me.itsatacoshop247.TreeAssist.core;
 import me.itsatacoshop247.TreeAssist.TreeAssist;
 import me.itsatacoshop247.TreeAssist.core.Language.MSG;
 import me.itsatacoshop247.TreeAssist.trees.CustomTree;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.TreeSpecies;
 import org.bukkit.block.Block;
@@ -142,12 +143,12 @@ public final class Utils {
         mushroomMaterials.add(Material.RED_MUSHROOM_BLOCK);
 	}
 
-	public static List<Material> toolgood = Arrays.asList(Material.WOODEN_AXE, Material.STONE_AXE, Material.IRON_AXE, Material.GOLDEN_AXE,
-			Material.DIAMOND_AXE);
+	public static List<Material> toolgood = Arrays.asList(Material.DIAMOND_AXE);
 	public static List<Material> toolbad = Arrays.asList(Material.IRON_SHOVEL, Material.IRON_PICKAXE, Material.IRON_SWORD, Material.WOODEN_SWORD,
 			Material.WOODEN_SHOVEL, Material.WOODEN_PICKAXE, Material.STONE_SWORD, Material.STONE_SHOVEL, Material.STONE_PICKAXE,
 			Material.DIAMOND_SWORD, Material.DIAMOND_SHOVEL, Material.DIAMOND_PICKAXE, Material.GOLDEN_SWORD, Material.GOLDEN_SHOVEL,
-			Material.GOLDEN_PICKAXE, Material.WOODEN_HOE, Material.STONE_HOE, Material.IRON_HOE, Material.GOLDEN_HOE, Material.DIAMOND_HOE);
+			Material.GOLDEN_PICKAXE, Material.WOODEN_HOE, Material.STONE_HOE, Material.IRON_HOE, Material.GOLDEN_HOE, Material.DIAMOND_HOE, Material.WOODEN_AXE,
+            Material.STONE_AXE, Material.IRON_AXE, Material.GOLDEN_AXE);
 
 
     public static void removeCustomGroup(Player player) {
@@ -357,7 +358,7 @@ public final class Utils {
 	public static boolean isRequiredTool(final ItemStack inHand) {
 		List<?> fromConfig = Utils.plugin.getConfig().getList("Tools.Tools List");
 		if (fromConfig.contains(inHand.getType().name())) {
-			return true;
+            return true;
 		}
 	
 		for (Object obj : fromConfig) {
@@ -402,8 +403,7 @@ public final class Utils {
 	}
 
 	public static boolean isVanillaTool(final ItemStack itemStack) {
-		return (toolbad.contains(itemStack.getType()) || toolgood
-				.contains(itemStack.getType()));
+		return (toolbad.contains(itemStack.getType()) || toolgood.contains(itemStack.getType()));
 	}
 
     public static String joinArray(final Object[] array, final String glue) {

@@ -116,7 +116,6 @@ public class TreeAssist extends JavaPlugin {
         }
     }
 
-    @EventHandler
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
         final AbstractCommand acc = (args.length > 0) ? commandMap.get(args[0].toLowerCase()) : null;
         if (acc != null) {
